@@ -1,11 +1,11 @@
-import { notification, NotificationArgsProps } from "antd"
-import ConditionalComponent from "../ConditionalComponent"
-import { CustomParagraph } from "./CustomParagraph"
+import { notification, NotificationArgsProps } from 'antd'
+import ConditionalComponent from '../ConditionalComponent'
+import { CustomParagraph } from './CustomParagraph'
 
 export const customNotification = ({
   message,
   description,
-  type = "info",
+  type = 'info',
   duration = 10,
   onClick,
   ...props
@@ -17,7 +17,7 @@ export const customNotification = ({
     duration,
     description: (
       <ConditionalComponent
-        condition={typeof description === "string"}
+        condition={typeof description === 'string'}
         fallback={description}
       >
         <CustomParagraph>

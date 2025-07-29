@@ -5,6 +5,22 @@ export type LoaderReturnType<T = string> = Record<string, T>
 
 export type ErroMessageMode = 'notification' | 'modal'
 
+export interface Metadata {
+  currentPage: number
+  totalPages: number
+  totalRows: number
+  count: number
+  pageSize: number
+  links?: {
+    nextPage?: string
+    previousPage?: string
+    first?: string
+    previous?: string
+    next?: string
+    last?: string
+  }
+}
+
 export interface PageMetadata {
   title?: string
   public?: boolean
@@ -88,3 +104,20 @@ export type ErrorCode =
   | 'FE008'
   | 403
   | 401
+
+export interface AdvancedCondition<T = any> {
+  value: string | number | boolean | (string | number)[]
+  field: keyof T | (keyof T)[]
+  operator: string
+}
+
+export interface ReturnPayload<T> {
+  data: T[]
+  metadata: { pagination: Metadata }
+}
+
+export interface GetPayload<T = unknown> {
+  condition: AdvancedCondition<T>[]
+  page: number
+  size: number
+}

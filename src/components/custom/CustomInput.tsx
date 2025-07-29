@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input, InputProps, InputRef } from 'antd'
 
-export type CustomInputProps = InputProps & {
+export interface CustomInputProps extends InputProps {
   autoComplete?: string
   tooltip?: string
   alwaysAvailable?: boolean

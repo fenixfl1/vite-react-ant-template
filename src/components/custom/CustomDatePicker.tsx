@@ -1,8 +1,7 @@
-import React from "react"
-import { DatePicker } from "antd"
-import { PickerProps } from "antd/es/date-picker/generatePicker"
-import { Dayjs } from "dayjs"
-import { defaultTheme } from "@/styles/themes"
+import React from 'react'
+import { DatePicker } from 'antd'
+import { PickerProps } from 'antd/es/date-picker/generatePicker'
+import { Dayjs } from 'dayjs'
 
 export type CustomDatePickerProps = PickerProps<Dayjs> & {
   width?: number | string
@@ -10,19 +9,11 @@ export type CustomDatePickerProps = PickerProps<Dayjs> & {
 
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   style,
-  width = "100%",
-  format = "DD/MM/YYYY",
-  size = defaultTheme.size,
+  width = '100%',
+  format = 'DD/MM/YYYY',
   ...props
 }) => {
-  return (
-    <DatePicker
-      size={size}
-      format={format}
-      style={{ ...style, width }}
-      {...props}
-    />
-  )
+  return <DatePicker format={format} style={{ ...style, width }} {...props} />
 }
 
 export default CustomDatePicker

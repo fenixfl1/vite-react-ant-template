@@ -1,13 +1,13 @@
-import React from "react"
-import { Modal, ModalProps } from "antd"
-import { CheckOutlined, StopOutlined } from "@ant-design/icons"
+import React from 'react'
+import { Modal, ModalProps } from 'antd'
+import { CheckOutlined, StopOutlined } from '@ant-design/icons'
 
 const CustomModal: React.FC<ModalProps> = ({
-  okText = "Aceptar",
-  cancelText = "Cancelar",
+  okText = 'Aceptar',
+  cancelText = 'Cancelar',
   okButtonProps,
   cancelButtonProps,
-  closable = false,
+  closable = true,
   ...props
 }) => {
   return (

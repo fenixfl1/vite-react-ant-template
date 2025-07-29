@@ -24,7 +24,7 @@ const router = () =>
 
         <Route element={<AuthGuard />}>
           <Route path={PATH_HOME} element={<Navigate to={PATH_DASHBOARD} />} />
-          <Route>
+          <Route path={'/:activityId'}>
             {privateRoutes.map(({ path, loader, element }, key) => (
               <Route element={element} key={key} loader={loader} path={path} />
             ))}

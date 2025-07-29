@@ -1,7 +1,6 @@
-import React from "react"
-import { Input, InputRef } from "antd"
-import { SearchProps } from "antd/es/input"
-import { defaultTheme } from "@/styles/themes"
+import React from 'react'
+import { Input, InputRef } from 'antd'
+import { SearchProps } from 'antd/es/input'
 
 const { Search } = Input
 
@@ -10,20 +9,11 @@ interface CustomSearchProps extends SearchProps {
 }
 
 const CustomSearch = React.forwardRef<InputRef, CustomSearchProps>(
-  (
-    {
-      width = "100%",
-      variant = "outlined",
-      size = defaultTheme.size,
-      ...props
-    },
-    ref
-  ) => {
+  ({ width = '100%', variant = 'outlined', ...props }, ref) => {
     return (
       <Search
         variant={variant}
         ref={ref}
-        size={size}
         style={{ ...props.style, width }}
         {...props}
       />
