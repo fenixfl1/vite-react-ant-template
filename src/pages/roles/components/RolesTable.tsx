@@ -6,13 +6,20 @@ import CustomDivider from 'src/components/custom/CustomDivider'
 import CustomTooltip from 'src/components/custom/CustomTooltip'
 import CustomButton from 'src/components/custom/CustomButton'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { Role } from 'src/services/roles/role.type'
+import { useRoleStore } from 'src/store/role.store'
+import { getTablePagination } from 'src/utils/table-pagination'
 
 interface RolesTableProps {
-  dataSource: unknown[]
+  onEdit?: (record: Role) => void
+  onUpdate?: (record: Role) => void
+  onChange: (page: number, size: number) => void
 }
 
-const RolesTable: React.FC<RolesTableProps> = ({ dataSource }) => {
-  const columns: ColumnsType<unknown> = [
+const RolesTable: React.FC<RolesTableProps> = ({ onChange }) => {
+  const { roleList, metadata } = useRoleStore()
+
+  const columns: ColumnsType<Role> = [
     {
       dataIndex: 'ROLE_ID',
       key: 'ROLE_ID',
@@ -64,7 +71,14 @@ const RolesTable: React.FC<RolesTableProps> = ({ dataSource }) => {
     },
   ]
 
-  return <CustomTable columns={columns} dataSource={dataSource} />
+  return (
+    <CustomTable
+      columns={columns}
+      dataSource={roleList}
+      pagination={getTablePagination(metadata)}
+      onChange={onChange}
+    />
+  )
 }
 
 export default RolesTable

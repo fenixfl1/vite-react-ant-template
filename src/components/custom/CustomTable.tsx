@@ -16,12 +16,19 @@ const Container = styled.div`
   }
 `
 
+interface CustomTableProps extends Omit<TableProps<any>, 'onChange'> {
+  onChange?: (page: number, size: number) => void
+}
+
 export interface CustomColumnType<T> extends ColumnType<T> {
   editable?: boolean
 }
 
-const CustomTable = React.forwardRef<any, TableProps<any>>(
-  ({ dataSource = [], expandable, bordered = false, ...props }, ref) => {
+const CustomTable = React.forwardRef<any, CustomTableProps>(
+  (
+    { dataSource = [], expandable, bordered = false, onChange, ...props },
+    ref
+  ) => {
     return (
       <>
         <Container>
@@ -29,6 +36,7 @@ const CustomTable = React.forwardRef<any, TableProps<any>>(
             dataSource={dataSource}
             bordered={bordered}
             ref={ref}
+            onChange={({ current, pageSize }) => onChange?.(current, pageSize)}
             rowClassName={(record) =>
               record?.state === 'A' ? 'active-row' : 'inactive-row'
             }

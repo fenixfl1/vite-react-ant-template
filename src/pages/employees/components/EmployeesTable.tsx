@@ -14,9 +14,10 @@ import { getTablePagination } from 'src/utils/table-pagination'
 interface EmployeesTableProps {
   onEdit?: (record: Staff) => void
   onUpdate?: (record: Staff) => void
+  onChange: (page: number, size: number) => void
 }
 
-const EmployeesTable: React.FC<EmployeesTableProps> = () => {
+const EmployeesTable: React.FC<EmployeesTableProps> = ({ onChange }) => {
   const { metadata, staffList } = useStaffStore()
 
   const columns: ColumnsType<Staff> = [
@@ -87,6 +88,7 @@ const EmployeesTable: React.FC<EmployeesTableProps> = () => {
       dataSource={staffList}
       columns={columns}
       pagination={getTablePagination(metadata)}
+      onChange={onChange}
     />
   )
 }
